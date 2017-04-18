@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- AverageRating Cicle Color for a book with averageRating between 1 and 2 -->
+    <color name="rating1">#C03823</color>
+
+    <!-- AverageRating Cicle Color for a book with averageRating between 2 and 3 -->
+    <color name="rating2">#E13A20</color>
+
+    <!-- AverageRating Cicle Color for a book with averageRating between 3 and 4 -->
+    <color name="rating3">#FC6644</color>
+
+    <!-- AverageRating Cicle Color for a book with averageRating between 4 and 5 -->
+    <color name="rating4">#F5A623</color>
+
+    <!-- AverageRating Cicle Color for a book with averageRating 5 -->
+    <color name="rating5">#4A7BA7</color>
+
+    <!-- AverageRating Cicle Color for a book with No averageRating available -->
+    <color name="ratingNA">#000000 </color>
+
+    <!-- AverageRating Cicle Color for a book with an unexpected rating value -->
+    <color name="ratingDefault">#ffffff </color>
+
+</resources>
