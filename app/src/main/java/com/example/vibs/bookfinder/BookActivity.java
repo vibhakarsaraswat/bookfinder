@@ -1,8 +1,10 @@
 package com.example.vibs.bookfinder;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -124,6 +126,21 @@ public class BookActivity extends AppCompatActivity {
             // data set. This will trigger the ListView to update.
             if(data != null && !data.isEmpty()) {
                 mAdapter.addAll(data);
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(BookActivity.this);
+                builder.setMessage("No book found!" + "\n" + "Please change Search text.")
+                        .setCancelable(false)
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener()
+                        {
+                            public void onClick(DialogInterface dialog, int id)
+                            {
+                                Intent iHome = new Intent(BookActivity.this, HomeActivity.class);
+                                startActivity(iHome);
+                            }
+                        }) ;
+
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         }
     }
