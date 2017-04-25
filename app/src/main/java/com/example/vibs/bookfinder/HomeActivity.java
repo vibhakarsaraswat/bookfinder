@@ -3,6 +3,7 @@ package com.example.vibs.bookfinder;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,11 @@ public class HomeActivity extends AppCompatActivity {
 
                 EditText edtSearch = (EditText) findViewById(R.id.edittext_search);
                 String searchedText = edtSearch.getText().toString();
+
+                if(TextUtils.isEmpty(searchedText)) {
+                    edtSearch.setError("Search field can't be Empty");
+                    return;
+                }
 
                 Intent iSearch = new Intent(HomeActivity.this, BookActivity.class);
                 iSearch.putExtra("searchKey", searchedText);

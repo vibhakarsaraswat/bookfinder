@@ -1,5 +1,6 @@
 package com.example.vibs.bookfinder;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -74,7 +75,6 @@ public class QueryUtils {
     /**
      * Make an HTTP request to the given URL and return a String as the response.
      */
-
     private static String makeHttpRequest(URL url) throws IOException {
         String jsonResponse = "";
 
@@ -155,6 +155,16 @@ public class QueryUtils {
 
             // Create a JSONObject from the SAMPLE_JSON_RESPONSE
             JSONObject baseJsonResponse  = new JSONObject(bookInfoJSON);
+
+            /**
+             * optJSONArray(); It returns null if there is no such key,
+             * or if its value is not a JSONArray.
+              */
+            // Check if 'items' array KEY is present or not in the baseJsonResponse
+            if (baseJsonResponse.optJSONArray("items") == null ) {
+                System.out.println("hellovibs, Pls change search Keyword ");
+                return null;
+            }
 
             // Extract the JSONArray associated with the key called "items",
             // which represents a list of items (or BookInfo).

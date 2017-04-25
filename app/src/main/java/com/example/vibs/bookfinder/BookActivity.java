@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -16,20 +17,24 @@ public class BookActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = BookActivity.class.getName();
 
-    public Intent intent = getIntent();
-    private String searchParam = intent.getStringExtra("searchedText");
-
-    public static final String GOOGLE_API_REQUEST_URL =
-        "https://www.googleapis.com/books/v1/volumes?q=love&maxResults=10";
-        // "https://www.googleapis.com/books/v1/volumes?q=" + searchParam + "&maxResults=10";
+    private static final String GOOGLE_API_REQUEST_URL =
+        "https://www.googleapis.com/books/v1/volumes?maxResults=10&q=";
+        // "https://www.googleapis.com/books/v1/volumes?q=&maxResults=10" + searchParam ;
 
     /** Adapter for the list of booksFoundInSearch */
     private BookAdapter mAdapter;
+
+    private String searchParam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
+
+        Intent intent = getIntent();
+        if (getIntent().getExtras() != null) {
+            searchParam = intent.getStringExtra("searchKey");
+        }
 
         // Create a new adapter that takes an empty list of booksFoundInSearch as input
         mAdapter = new BookAdapter(this, new ArrayList<BookInfo>());
@@ -62,9 +67,13 @@ public class BookActivity extends AppCompatActivity {
             }
         });
 
-        // Start the AsyncTask to fetch the BookInfo data
-        BookInfoAsyncTask task = new BookInfoAsyncTask();
-        task.execute(GOOGLE_API_REQUEST_URL);
+        if (searchParam != null) {
+            // Start the AsyncTask to fetch the BookInfo data
+            BookInfoAsyncTask task = new BookInfoAsyncTask();
+
+            task.execute(GOOGLE_API_REQUEST_URL+searchParam);
+        }
+
     }
 
     /**
@@ -92,6 +101,7 @@ public class BookActivity extends AppCompatActivity {
         protected List<BookInfo> doInBackground(String... urls) {
             // Don't perform the request if there are no URLs, or the first URL is null
             if(urls.length < 1 || urls[0] == null) {
+                Log.d(LOG_TAG, urls[0]);
                 return null;
             }
 
