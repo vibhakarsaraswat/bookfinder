@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">BookFinder</string>
     <string name="hint_book_description">Book description</string>
+    <string name="book_not_found">No Book Found!\nPlease change search text.</string>
 </resources>

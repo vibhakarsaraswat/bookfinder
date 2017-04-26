@@ -162,7 +162,6 @@ public class QueryUtils {
               */
             // Check if 'items' array KEY is present or not in the baseJsonResponse
             if (baseJsonResponse.optJSONArray("items") == null ) {
-                System.out.println("hellovibs, Pls change search Keyword ");
                 return null;
             }
 
@@ -193,7 +192,7 @@ public class QueryUtils {
 
                 // Extract the value for the Key Called "author"
                 JSONArray arrayAuthors = volumeInfo.getJSONArray("authors");
-                String authors = null;
+                String authors = "";
                 // If there are more than 1 author, use a comma "," separator
                 if (arrayAuthors.length() > 1) {
                     for(int j = 1; j < arrayAuthors.length(); j++) {
@@ -201,7 +200,6 @@ public class QueryUtils {
                     }
                 }
                 authors = arrayAuthors.getString(0) + authors;
-
 
                 // Extract the value for the Key Called "language"
                 String language = volumeInfo.getString("language");

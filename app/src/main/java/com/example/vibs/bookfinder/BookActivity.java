@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Loader;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,32 +23,43 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     private static final String GOOGLE_API_REQUEST_URL =
         "https://www.googleapis.com/books/v1/volumes?maxResults=10&q=";
-        // "https://www.googleapis.com/books/v1/volumes?q=&maxResults=10" + searchParam ;
+
     /**
      * Constant value for the earthquake loader ID. We can choose any integer.
      * This really only comes into play if you're using multiple loaders.
      */
     private static final int BookInfo_LOADER_ID = 1;
+
     /** Adapter for the list of booksFoundInSearch */
     private BookAdapter mAdapter;
+
+    /** Variable to store value for 'searchKey'  */
     private String searchParam;
+
+    /** TextView that is displayed when the list is empty */
+    private TextView mEmptyStateTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
 
+        // Fetching the value of Extra Argument passed in the intent.
         Intent intent = getIntent();
         if (getIntent().getExtras() != null) {
             searchParam = intent.getStringExtra("searchKey");
         }
 
-        // Create a new adapter that takes an empty list of booksFoundInSearch as input
-        mAdapter = new BookAdapter(this, new ArrayList<BookInfo>());
-
         // Find the reference to the {@link ListView} in the layout and
         // assign it to a new ListView Object i.e. BooksListView
+        // Note: At this moment ListView is EMPTY.
         ListView booksListView = (ListView) findViewById(R.id.list);
+
+        mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
+        booksListView.setEmptyView(mEmptyStateTextView);
+
+        // Create a new adapter that takes an empty list of booksFoundInSearch as input
+        mAdapter = new BookAdapter(this, new ArrayList<BookInfo>());
 
         // Now set the mAdapter on the above created ListView i.e.  booksListView,
         // so that list can be populated in the UI.
@@ -92,6 +104,9 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     @Override
     public void onLoadFinished(Loader<List<BookInfo>> loader, List<BookInfo> data) {
+
+        mEmptyStateTextView.setText(R.string.book_not_found);
+
         // Clear the adapter of previous BookInfo data
         mAdapter.clear();
 
@@ -99,20 +114,6 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
         // data set. This will trigger the ListView to update.
         if (data != null && !data.isEmpty()) {
             mAdapter.addAll(data);
-        } else {
-            AlertDialog.Builder builder = new AlertDialog.Builder(BookActivity.this);
-            builder.setMessage("No book found!" + "\n" + "Please change Search text.")
-                    .setCancelable(false)
-                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id)
-                        {
-                            Intent iHome = new Intent(BookActivity.this, HomeActivity.class);
-                            startActivity(iHome);
-                        }
-                    });
-
-            AlertDialog alert = builder.create();
-            alert.show();
         }
     }
 
