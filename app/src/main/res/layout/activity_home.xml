@@ -25,7 +25,7 @@
 
     <Button
         android:id="@+id/button_search"
-        android:text="Search"
+        android:text="@string/search"
         android:fontFamily="sans-serif-medium"
         android:textSize="16sp"
         android:layout_width="wrap_content"

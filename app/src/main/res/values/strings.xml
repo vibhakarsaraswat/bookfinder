@@ -2,6 +2,9 @@
     <string name="app_name">BookFinder</string>
     <string name="hint_book_description">Book description</string>
 
+    <!-- Text to display Button Text [CHAR LIMIT=NONE] -->
+    <string name="search">SEARCH</string>
+
     <!--Error Messages -->
     <!-- Text to display in the EditText when its left Empty [CHAR LIMIT=NONE] -->
     <string name="search_text_missing">Search field can\'t be Empty</string>

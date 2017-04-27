@@ -6,19 +6,19 @@ package com.example.vibs.bookfinder;
 public class BookInfo {
 
     /** AvergareRating of the Book */
-    private double mAverageRating;
+    private final double mAverageRating;
 
     /** Title of the Book */
-    private String mTitle;
+    private final String mTitle;
 
     /** Author of the Book */
-    private String mAuthor;
+    private final String mAuthor;
 
     /** Language of the Book */
-    private String mLanguage;
+    private final String mLanguage;
 
     /** Link for further Info about the Book */
-    private String mInfoLink;
+    private final String mInfoLink;
 
     /**
      * Constructs a new {@link BookInfo} object.
