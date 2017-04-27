@@ -19,11 +19,15 @@
         android:inputType="textPersonName"
         android:hint="@string/hint_book_description"
         android:ems="10"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="16sp"
         android:layout_centerInParent="true" />
 
     <Button
         android:id="@+id/button_search"
         android:text="Search"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"

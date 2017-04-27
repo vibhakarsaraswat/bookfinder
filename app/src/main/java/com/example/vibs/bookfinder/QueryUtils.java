@@ -1,6 +1,5 @@
 package com.example.vibs.bookfinder;
 
-import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -9,7 +8,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.IOError;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -50,13 +48,6 @@ public class QueryUtils {
 
         // Extract relevant fields from the JSON response and create a list of {@link BookInfo}s
         List<BookInfo> booksFoundInSearch = extractFeatureFromJson(jsonResponse);
-
-        // TO BE REMOVED
-        try {
-            Thread.sleep(3000 /* milliseconds */);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         // Return the list of {@link BookInfo}s
         return booksFoundInSearch;
