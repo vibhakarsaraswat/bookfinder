@@ -120,7 +120,6 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
             // Update empty state with no connection error message
             mEmptyStateTextView.setText(R.string.no_internet_connection);
         }
-
     }
 
     @Override
