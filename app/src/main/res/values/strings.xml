@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">BookFinder</string>
     <string name="hint_book_description">Book description</string>
+
+    <!--Error Messages -->
     <string name="book_not_found">No Book Found!\nPlease change search text.</string>
+    <string name="search_text_missing">Search field can\'t be Empty</string>
 </resources>

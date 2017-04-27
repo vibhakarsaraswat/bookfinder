@@ -42,7 +42,6 @@ public class QueryUtils {
 
         // Perform HTTP request to the URL and receive a JSON response back
         String jsonResponse = null;
-
         try {
             jsonResponse = makeHttpRequest(url);
         } catch (IOException e) {
@@ -51,6 +50,13 @@ public class QueryUtils {
 
         // Extract relevant fields from the JSON response and create a list of {@link BookInfo}s
         List<BookInfo> booksFoundInSearch = extractFeatureFromJson(jsonResponse);
+
+        // TO BE REMOVED
+        try {
+            Thread.sleep(3000 /* milliseconds */);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         // Return the list of {@link BookInfo}s
         return booksFoundInSearch;

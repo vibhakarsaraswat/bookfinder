@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Loader;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -104,6 +105,10 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     @Override
     public void onLoadFinished(Loader<List<BookInfo>> loader, List<BookInfo> data) {
+
+        // making ProgressBar disappear.
+        ProgressBar loin = (ProgressBar) findViewById(R.id.loading_spinner);
+        loin.setVisibility(View.GONE);
 
         mEmptyStateTextView.setText(R.string.book_not_found);
 

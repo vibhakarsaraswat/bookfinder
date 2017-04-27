@@ -24,7 +24,7 @@ public class HomeActivity extends AppCompatActivity {
                 String searchedText = edtSearch.getText().toString();
 
                 if(TextUtils.isEmpty(searchedText)) {
-                    edtSearch.setError("Search field can't be Empty");
+                    edtSearch.setError(getText(R.string.search_text_missing));
                     return;
                 }
 

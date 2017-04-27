@@ -25,4 +25,13 @@
     <!-- AverageRating Cicle Color for a book with an unexpected rating value -->
     <color name="ratingDefault">#ffffff </color>
 
+    <!-- Text color for the Book Title in the list item -->
+    <color name="textColorBookTitle">#2B3D4D</color>
+
+    <!-- Text color for the Book Author in the list item -->
+    <color name="textColorBookAuthor">#B4BAC0</color>
+
+    <!-- Text color for the Book Language in the list item -->
+    <color name="textColorBookLanguage">#000000</color>
+
 </resources>
