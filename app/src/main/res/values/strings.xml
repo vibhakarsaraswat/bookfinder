@@ -5,8 +5,11 @@
     <!-- Text to display Button Text [CHAR LIMIT=NONE] -->
     <string name="search">SEARCH</string>
 
+    <!-- Text to display Button Text [CHAR LIMIT=NONE] -->
+    <string name="author_not_found">Author not found</string>
+
     <!--Error Messages -->
-    <!-- Text to display in the EditText when its left Empty [CHAR LIMIT=NONE] -->
+    <!-- Text to display in the ListVIew when Author field is Empty [CHAR LIMIT=NONE] -->
     <string name="search_text_missing">Search field can\'t be Empty</string>
 
     <!-- Text to display in the list when there are no Books found [CHAR LIMIT=NONE] -->

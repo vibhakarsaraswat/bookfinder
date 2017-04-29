@@ -25,7 +25,7 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     /** URL to fetch Book data from the Google API */
     private static final String GOOGLE_API_REQUEST_URL =
-        "https://www.googleapis.com/books/v1/volumes?maxResults=20&q=";
+        "https://www.googleapis.com/books/v1/volumes?maxResults=10&q=";
 
     /**
      * Constant value for the earthquake loader ID. We can choose any integer.
@@ -114,8 +114,8 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
         } else {
             // Otherwise, display error
             // First, hide loading indicator so error message will be visible
-            ProgressBar loin = (ProgressBar) findViewById(R.id.loading_spinner);
-            loin.setVisibility(View.GONE);
+            ProgressBar progressBar = (ProgressBar) findViewById(R.id.loading_spinner);
+            progressBar.setVisibility(View.GONE);
 
             // Update empty state with no connection error message
             mEmptyStateTextView.setText(R.string.no_internet_connection);
@@ -132,8 +132,8 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
     public void onLoadFinished(Loader<List<BookInfo>> loader, List<BookInfo> data) {
 
         // Hide loading indicator because the data has been loaded
-        ProgressBar loin = (ProgressBar) findViewById(R.id.loading_spinner);
-        loin.setVisibility(View.GONE);
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.loading_spinner);
+        progressBar.setVisibility(View.GONE);
 
         // Set empty state text to display "No Book Found!"
         mEmptyStateTextView.setText(R.string.book_not_found);

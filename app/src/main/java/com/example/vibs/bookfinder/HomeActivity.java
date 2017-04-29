@@ -8,30 +8,33 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class HomeActivity extends AppCompatActivity {
+
+    @BindView(R.id.edittext_search)
+    EditText edtSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        ButterKnife.bind(this);
+    }
 
-        Button objSearchButton  = (Button) findViewById(R.id.button_search);
-        objSearchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    @OnClick(R.id.button_search)
+    public void onClick(View view) {
+        String searchedText = edtSearch.getText().toString();
 
-                EditText edtSearch = (EditText) findViewById(R.id.edittext_search);
-                String searchedText = edtSearch.getText().toString();
+        if(TextUtils.isEmpty(searchedText)) {
+            edtSearch.setError(getText(R.string.search_text_missing));
+            return;
+        }
 
-                if(TextUtils.isEmpty(searchedText)) {
-                    edtSearch.setError(getText(R.string.search_text_missing));
-                    return;
-                }
-
-                Intent iSearch = new Intent(HomeActivity.this, BookActivity.class);
-                iSearch.putExtra("searchKey", searchedText);
-                startActivity(iSearch);
-            }
-        });
+        Intent iSearch = new Intent(HomeActivity.this, BookActivity.class);
+        iSearch.putExtra("searchKey", searchedText);
+        startActivity(iSearch);
     }
 }

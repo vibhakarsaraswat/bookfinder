@@ -1,5 +1,6 @@
 package com.example.vibs.bookfinder;
 
+
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -190,13 +191,16 @@ public class QueryUtils {
                 // Extract the value for the Key Called "author"
                 JSONArray arrayAuthors = volumeInfo.getJSONArray("authors");
                 String authors = "";
-                // If there are more than 1 author, use a comma "," separator
-                if (arrayAuthors.length() > 1) {
-                    for(int j = 1; j < arrayAuthors.length(); j++) {
-                        authors = ", " + arrayAuthors.getString(j);
+                if (volumeInfo.has("authors")) {
+                    if (arrayAuthors.length() > 1) {
+                        for(int j = 1; j < arrayAuthors.length(); j++) {
+                            authors += ", " + arrayAuthors.getString(j);
+                        }
+                        authors = arrayAuthors.getString(0) + authors;
+                    } else {
+                        authors = arrayAuthors.getString(0);
                     }
                 }
-                authors = arrayAuthors.getString(0) + authors;
 
                 // Extract the value for the Key Called "language"
                 String language = volumeInfo.getString("language");
