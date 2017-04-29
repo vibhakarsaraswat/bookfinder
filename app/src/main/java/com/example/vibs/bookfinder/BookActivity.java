@@ -25,7 +25,7 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     /** URL to fetch Book data from the Google API */
     private static final String GOOGLE_API_REQUEST_URL =
-        "https://www.googleapis.com/books/v1/volumes?maxResults=10&q=";
+        "https://www.googleapis.com/books/v1/volumes?maxResults=40&q=";
 
     /**
      * Constant value for the earthquake loader ID. We can choose any integer.
